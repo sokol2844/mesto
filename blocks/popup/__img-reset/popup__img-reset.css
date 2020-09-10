@@ -1,0 +1,11 @@
+.popup__img-reset {
+	width: 57px;
+	height: 57px;
+}
+
+@media screen and (max-width: 512px) {
+    .popup__img-reset {
+    	height: 36px;
+    	width: 36px;
+    }
+}
