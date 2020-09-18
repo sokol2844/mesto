@@ -23,64 +23,47 @@
 			<button class="profile__add-button" type="button"><img src="./images/add.svg" alt="Добавить"></button>
 		</section>
 		<section class="elements">
-			<ul class="elements__cards">
-				<li class="elements__card">
-					<img class="elements__foto" src="./images/element.jpg" alt="фото">
-					<div class="elements__title-group">
-						<h2 class="elements__title">Домбай</h2>
-						<button class="elements__like-button" type="button"><img src="./images/like.svg" alt="like"></button>
-					</div>
-				</li>
-				<li class="elements__card">
-					<img class="elements__foto" src="./images/element.jpg" alt="фото">
-					<div class="elements__title-group">
-						<h2 class="elements__title">Домбай</h2>
-						<button class="elements__like-button" type="button"><img src="./images/like.svg" alt="like"></button>
-					</div>
-				</li>
-				<li class="elements__card">
-					<img class="elements__foto" src="./images/element.jpg" alt="фото">
-					<div class="elements__title-group">
-						<h2 class="elements__title">Домбай</h2>
-						<button class="elements__like-button" type="button"><img src="./images/like.svg" alt="like"></button>
-					</div>
-				</li>
-				<li class="elements__card">
-					<img class="elements__foto" src="./images/element.jpg" alt="фото">
-					<div class="elements__title-group">
-						<h2 class="elements__title">Домбай</h2>
-						<button class="elements__like-button" type="button"><img src="./images/like.svg" alt="like"></button>
-					</div>
-				</li>
-				<li class="elements__card">
-					<img class="elements__foto" src="./images/element.jpg" alt="фото">
-					<div class="elements__title-group">
-						<h2 class="elements__title">Домбай</h2>
-						<button class="elements__like-button" type="button"><img src="./images/like.svg" alt="like"></button>
-					</div>
-				</li>
-				<li class="elements__card">
-					<img class="elements__foto" src="./images/element.jpg" alt="фото">
-					<div class="elements__title-group">
-						<h2 class="elements__title">Домбай</h2>
-						<button class="elements__like-button" type="button"><img src="./images/like.svg" alt="like"></button>
-					</div>
-				</li>
-			</ul>
+			<ul class="elements__cards"></ul>
 		</section>
 	</main>
 	<footer class="footer">
 		<h3 class="footer__text">© 2020 Mesto Russia</h3>
 	</footer>
-	<div class="popup">
+	<div class="popup profile-edit-popup">
 		<form class="popup__container" method="get" name="profile-edit-form">
 			<h2 class="popup__title">Редактировать профиль</h2>
 			<input type="text" class="popup__input popup__input_name" placeholder="Имя" name="input-name">
 			<input type="text" class="popup__input popup__input_about" placeholder="Описание" name="input-about">
 			<button class="popup__button-save" type="submit">Сохранить</button>
+			<button class="popup__button-reset popup__button-reset_form-edit" type="reset"><img class="popup__img-reset" src="./images/close.svg" alt="Закрыть"></button>
+		</form>
+	</div>
+	<div class="popup card-add-popup">
+		<form class="popup__container" method="get" name="card-add-form">
+			<h2 class="popup__title">Новое место</h2>
+			<input type="text" class="popup__input popup__input_name" placeholder="Название" name="input-title">
+			<input type="text" class="popup__input popup__input_about" placeholder="Ссылка на картинку" name="input-link">
+			<button class="popup__button-save" type="submit">Сохранить</button>
 			<button class="popup__button-reset" type="reset"><img class="popup__img-reset" src="./images/close.svg" alt="Закрыть"></button>
 		</form>
 	</div>
+	<div class="popup image-popup">
+		<div class="image-popup__container">
+			<img class="image-popup__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg">
+			<p class="image-popup__title">Mesto</p>
+			<button class="image-popup__button-reset" type="reset"><img class="image-popup__img-reset" src="./images/close.svg" alt="Закрыть"></button>
+		</div>
+	</div>
+	<template id="template-list-item">
+				<li class="elements__card">
+					<img class="elements__foto" src="" alt="фото">
+					<div class="elements__title-group">
+						<h2 class="elements__title"></h2>
+						<button class="elements__like-button" type="button"><img src="./images/like.svg" alt="like"></button>
+					</div>
+					<button class="elements__delete-button" type="button"><img src="./images/delete.svg" alt="delete"></button>
+				</li>
+	</template>
 	<script src="./script/index.js"></script>
 </body>
 </html>
