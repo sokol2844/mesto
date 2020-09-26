@@ -7,7 +7,7 @@
 	line-height: 17px;
 	outline: none;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-	width: calc(100% - 36px);
+	width: calc(100% - 72px);
 	margin: 30px auto 0;
 }
 
@@ -17,6 +17,6 @@
 
 @media screen and (max-width: 512px) {
     .popup__input {
-    	width: calc(100% - 22px);
+    	width: calc(100% - 44px);
     }
 }

@@ -66,20 +66,20 @@ function handleSubmitFormProfileEdit(evt) {
 }
 
 function handleLikeClick(evt) {
-	let target = evt.target;
-	let attribute = target.getAttribute('src');
-	let color = attribute==='./images/like.svg'? './images/like_active.svg':'./images/like.svg';
+	const target = evt.target;
+	const attribute = target.getAttribute('src');
+	const color = attribute==='./images/like.svg'? './images/like_active.svg':'./images/like.svg';
 	target.setAttribute('src', color);
 }
 
 function deleteCard(evt) {
-	let target = evt.target;
-	let listItem = target.closest('.elements__card');
+	const target = evt.target;
+	const listItem = target.closest('.elements__card');
 	listItem.remove();
 }
 
 function createCard(item) {
-	let template = document.querySelector('#template-list-item').content;
+	const template = document.querySelector('#template-list-item').content;
 	const element = template.cloneNode(true);
 	element.querySelector('.elements__title').textContent = item.name;
 	element.querySelector('.elements__foto').src = item.link;
@@ -101,7 +101,7 @@ function openFormCardAdd() {
 
 function handleSubmitFormCardAdd(evt) {
 	evt.preventDefault();
-	item = {
+	const item = {
 		name: inputTitle.value,
 		link: inputLink.value
 	}
