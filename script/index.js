@@ -115,6 +115,21 @@ function openPopupImage(name, img) {
 	openPopup(popupImage);
 }
 
+function handleOverlayClick(evt) {
+	if (evt.target.classList.contains('popup')){
+		//console.log(evt.target);
+		closePopup(evt.target);
+	}
+}
+
+function handleEscPress(evt) {
+	if (evt.keyCode === 27) {
+		const popup = evt.target.closest('.popup')
+		console.log(popup);
+		closePopup(popup);
+	}
+}
+
 initialCards.forEach((item) => {
 	addCard(cardList,createCard(item));
 })
@@ -129,6 +144,14 @@ formCardAdd.addEventListener('reset', () => closePopup(popupCardAdd));
 formCardAdd.addEventListener('submit', handleSubmitFormCardAdd);
 
 buttonResetPopupImage.addEventListener('click', () => closePopup(popupImage));
+
+popupProfileEdit.addEventListener('click', handleOverlayClick);
+popupCardAdd.addEventListener('click', handleOverlayClick);
+popupImage.addEventListener('click', handleOverlayClick);
+
+popupProfileEdit.addEventListener('keydown', handleEscPress);
+popupCardAdd.addEventListener('keydown', handleEscPress);
+//popupImage.addEventListener('keydown', handleEscPress);
 
 //buttonDelete.addEventListener('click', deleteCard);
 /*document.querySelector('.elements__cards').addEventListener('click', (evt) => {

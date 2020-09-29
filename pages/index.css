@@ -27,7 +27,9 @@
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__input/_error/popup__input_error.css);
 @import url(../blocks/popup/__button-save/popup__button-save.css);
+@import url(../blocks/popup/__button-save/_disabled/popup__button-save_disabled.css);
 @import url(../blocks/popup/__button-reset/popup__button-reset.css);
 @import url(../blocks/popup/__img-reset/popup__img-reset.css);
 @import url(../blocks/image-popup/__image/image-popup__image.css);
@@ -35,6 +37,7 @@
 @import url(../blocks/image-popup/__button-reset/image-popup__button-reset.css);
 @import url(../blocks/image-popup/__img-reset/image-popup__img-reset.css);
 @import url(../blocks/image-popup/__container/image-popup__container.css);
+@import url(../blocks/popup/__error/popup__error.css);
 /*{
 	outline: 0.5px red solid;
 }
