@@ -16,6 +16,7 @@ const inputLink = document.querySelector('[name="input-link"]');
 const buttonDelete = document.querySelector('.elements__delete-button');
 const cardList = document.querySelector('.elements__cards');
 const buttonResetPopupImage = document.querySelector('.image-popup__button-reset');
+const template = document.querySelector('#template-list-item').content;
 
 const initialCards = [
     {
@@ -46,10 +47,12 @@ const initialCards = [
 
 function openPopup(popup) {
 	popup.classList.add('popup_opened');
+	document.addEventListener('keydown', handleEscPress);
 }
 
 function closePopup(popup) {
 	popup.classList.remove('popup_opened');
+	document.removeEventListener('keydown', handleEscPress);
 }
 
 function openFormProfileEdit() {
@@ -79,7 +82,6 @@ function deleteCard(evt) {
 }
 
 function createCard(item) {
-	const template = document.querySelector('#template-list-item').content;
 	const element = template.cloneNode(true);
 	element.querySelector('.elements__title').textContent = item.name;
 	element.querySelector('.elements__foto').src = item.link;
@@ -124,8 +126,11 @@ function handleOverlayClick(evt) {
 
 function handleEscPress(evt) {
 	if (evt.keyCode === 27) {
-		const popup = evt.target.closest('.popup')
-		console.log(popup);
+		//const popup = evt.target.closest('.popup');
+		//if (popup===null) {
+		const popup = document.querySelector('.popup_opened');
+		//}
+		//console.log(evt.target);
 		closePopup(popup);
 	}
 }
@@ -149,7 +154,7 @@ popupProfileEdit.addEventListener('click', handleOverlayClick);
 popupCardAdd.addEventListener('click', handleOverlayClick);
 popupImage.addEventListener('click', handleOverlayClick);
 
-popupProfileEdit.addEventListener('keydown', handleEscPress);
+/*popupProfileEdit.addEventListener('keydown', handleEscPress);
 popupCardAdd.addEventListener('keydown', handleEscPress);
 //popupImage.addEventListener('keydown', handleEscPress);
 
