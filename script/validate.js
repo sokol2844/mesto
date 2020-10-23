@@ -82,4 +82,4 @@ const enableValidation = (allClasses) => {
   });
 };
 //console.log('script start');
-enableValidation(allSelectorClasses);
+//enableValidation(allSelectorClasses);
