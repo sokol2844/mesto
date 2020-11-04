@@ -38,6 +38,3 @@
 @import url(../blocks/image-popup/__img-reset/image-popup__img-reset.css);
 @import url(../blocks/image-popup/__container/image-popup__container.css);
 @import url(../blocks/popup/__error/popup__error.css);
-/*{
-	outline: 0.5px red solid;
-}

@@ -1,9 +1,9 @@
 export default class Card {
-    constructor(text, image, templateid, openPopupImg) {
+    constructor(text, image, templateid, handleCardClick) {
         this._text = text;
         this._image = image;
         this._templateid = templateid;
-        this._openPopupImg = openPopupImg;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -36,7 +36,7 @@ export default class Card {
     _setEventListeners() {
         this._element.querySelector('.elements__like-button').addEventListener('click', this._handleLikeClick);
         this._element.querySelector('.elements__delete-button').addEventListener('click', this._handleDelete);
-        this._element.querySelector('.elements__foto').addEventListener('click', ()=>{this._openPopupImg(this._text,this._image)});
+        this._element.querySelector('.elements__foto').addEventListener('click', ()=>{this._handleCardClick(this._text,this._image)});
     }
     
 }

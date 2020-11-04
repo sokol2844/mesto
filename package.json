@@ -1,0 +1,41 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "Проект представляет из себя адаптивный сайт, написаный на \"чистых\" html, css и js.\r Проект будет доработан с помощью JS. Будет добавлен новый функционал(например добавление своих карточек и возможность поставить лайк).",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && webpack --mode production",
+    "dev": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sokol2844/mesto.git"
+  },
+  "author": "Sokolov Aleksander",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sokol2844/mesto/issues"
+  },
+  "homepage": "https://github.com/sokol2844/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "autoprefixer": "^10.0.1",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^5.0.0",
+    "cssnano": "^4.1.10",
+    "file-loader": "^6.2.0",
+    "html-loader": "^1.3.2",
+    "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "^1.2.1",
+    "package": "^1.0.1",
+    "postcss": "^8.1.4",
+    "postcss-loader": "^4.0.4",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5"
+  }
+}
