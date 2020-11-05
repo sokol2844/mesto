@@ -3,10 +3,12 @@ export default class Popup {
         this._popup = document.querySelector(popupSelector);
         this._escCode = 27;
         this._reset = this._popup.querySelector('.popup__button-reset');
+        this._handleEscClose = this._handleEscClose.bind(this);
     }
 
     open() {
         this._popup.classList.add('popup_opened');
+        document.addEventListener('keydown', this._handleEscClose);
     }
 
     close() {
@@ -28,7 +30,6 @@ export default class Popup {
     
     setEventListeners() {
         this._reset.addEventListener('click', this.close.bind(this));
-        document.addEventListener('keydown', this._handleEscClose.bind(this));
         this._popup.addEventListener('click', this._handleOverlayClick.bind(this));
     }
 }

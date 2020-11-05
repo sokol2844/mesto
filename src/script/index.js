@@ -15,15 +15,7 @@ const inputDescription = document.querySelector('[name="about"]');
 const cardSection = new Section({
 	data: initialCards,
 	renderer: (item) => {
-		let card = new Card(
-			item.name, 
-			item.link, 
-			'template-list-item', 
-			(name, img) => {
-				popupImage.open(img, name);
-			});
-		let cardElement = card.generateCard();
-		cardSection.setItem(cardElement);
+		cardSection.setItem(createCard(item));
 	},
   	},
   	'.elements__cards'
