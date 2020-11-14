@@ -4,4 +4,10 @@
 	border-radius: 120px;
 	margin: 0;
 	padding: 0;
+	z-index: -1;
+}
+
+.profile__avatar:hover {
+	opacity: 0.2;
+	cursor: pointer;
 }

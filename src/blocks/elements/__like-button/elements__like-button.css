@@ -1,7 +1,10 @@
 .elements__like-button {
 	background-color: white;
 	border: none;
-	margin: auto 30px auto 0;
+	/*margin: auto 30px auto 0;*/
+	background-image: url(../../../images/like.svg);
+	height: 18px;
+	width: 21px;
 }
 
 .elements__like-button:hover {

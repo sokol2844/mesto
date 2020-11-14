@@ -1,0 +1,6 @@
+.profile__avatar-overlay{
+    background-image: url(../../../images/edit-avatar.svg);
+    background-repeat: no-repeat;
+    z-index: 1;
+    background-position: 50%;
+}

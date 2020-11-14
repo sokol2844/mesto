@@ -36,5 +36,6 @@ export const initialCards = [
 
 export const userInfoSelectors = {
     nameSelector:'.profile__title',
-    infoSelector:'.profile__subtitle'
+    infoSelector:'.profile__subtitle',
+    avatarSelector:'.profile__avatar'
 }

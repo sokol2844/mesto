@@ -6,6 +6,7 @@ export default class PopupWidthForm extends Popup{
         this._handleFormSubmit = handleFormSubmit;
         this._form = this._popup.querySelector('.popup__container');
         this._inputList = this._popup.querySelectorAll('.popup__input');
+        this.saveButton = this._popup.querySelector('.popup__button-save');
     }
 
     close() {
