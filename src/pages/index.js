@@ -1,13 +1,13 @@
-import '../pages/index.css'
-import Card from './Card.js'
-import FormValidator from './FormValidator.js'
-import Section from './Section.js'
-import PopupWidthImage from './PopupWidthImage.js'
-import PopupWidthForm from './PopupWidthForm.js'
-import PopupDeleteCard from './PopupDeleteCard.js'
-import UserInfo from './UserInfo.js'
-import Api from './Api.js'
-import {allSelectorClasses, initialCards, userInfoSelectors} from './constants.js'
+import './index.css'
+import Card from '../components/Card.js'
+import FormValidator from '../components/FormValidator.js'
+import Section from '../components/Section.js'
+import PopupWidthImage from '../components/PopupWidthImage.js'
+import PopupWidthForm from '../components/PopupWidthForm.js'
+import PopupDeleteCard from '../components/PopupDeleteCard.js'
+import UserInfo from '../components/UserInfo.js'
+import Api from '../components/Api.js'
+import {allSelectorClasses, initialCards, userInfoSelectors} from '../components/constants.js'
 /*import { info } from 'autoprefixer'
 import { pop } from 'core-js/fn/array'*/
 const formCardAdd = document.querySelector('[name="card-add-form"]');
@@ -17,6 +17,19 @@ const inputName = document.querySelector('[name="name"]');
 const inputDescription = document.querySelector('[name="about"]');
 const avatar = document.querySelector('.profile__avatar');
 let myId = '';
+
+function catchErr(err) {
+	console.log(err);
+}
+
+const cardSection = new Section({
+	data: initialCards,
+	renderer: (item) => {
+		cardSection.setItem(createCard(item));
+	},
+	  },
+	  '.elements__cards'
+);
 
 const api = new Api({
 	baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-17',
@@ -30,32 +43,12 @@ const api = new Api({
 	  profileInfo.setAvatar(res.avatar);
 	  myId = res._id;
   })
-//api.setUserInfo('Jakif','what u wana see');
-//api.addNewCard('Всем привет)','https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg')
+  .catch(catchErr);
   api.getInitialCards().then((res) => {
-	  let cardSection1 = new Section({
-		data: res,
-		renderer: (item) => {
-			cardSection1.setItem(createCard(item));
-		},
-		  },
-		  '.elements__cards'
-	);
-	
-	cardSection1.renderItems();
-	  
-	  
-  });
-const cardSection = new Section({
-	data: initialCards,
-	renderer: (item) => {
-		cardSection.setItem(createCard(item));
-	},
-	  },
-	  '.elements__cards'
-);
-
-//cardSection.renderItems();
+		res = res.reverse();
+		res.forEach(item => cardSection.setItem(createCard(item)));
+  })
+  .catch(catchErr);
 
 
 const popupImage = new PopupWidthImage('.image-popup');
@@ -67,8 +60,9 @@ popupCardAdd.setEventListeners();
 const popupDeleteCard = new PopupDeleteCard('.card-delete-popup', (card) => {
 	api.deleteCard(card._id).then((res) => {
 		popupDeleteCard.close();
-		window.location.reload();
-	});
+		card.deleteCard();
+	})
+	.catch(catchErr);
 })
 
 popupDeleteCard.setEventListeners();
@@ -86,8 +80,12 @@ popupProfileEdit.setEventListeners();
 const popupAvatar = new PopupWidthForm('.avatar-popup', (input) => {
 	popupAvatar.saveButton.textContent = 'Сохранение...';
 	api.setUserAvatar(input.avatar).then((res) => {
-		window.location.reload();
+		//window.location.reload();
+		profileInfo.setAvatar(res.avatar);
+		popupAvatar.close();
+		popupAvatar.saveButton.textContent = 'Сохранить';
 	})
+	.catch(catchErr);
 });
 
 popupAvatar.setEventListeners();
@@ -104,9 +102,12 @@ function handleSubmitFormProfileEdit(input) {
 	//profileInfo.setUserInfo(input.name, input.about);
 	popupProfileEdit.saveButton.textContent = 'Сохранение...';
 	api.setUserInfo(input.name, input.about).then((res) => {
+		profileInfo.setUserInfo(input.name, input.about);
 		this.close();
-		window.location.reload();
-	});
+		popupProfileEdit.saveButton.textContent = 'Сохранить';
+		//window.location.reload();
+	})
+	.catch(catchErr);
 }
 
 function createCard(item) {
@@ -124,15 +125,17 @@ function createCard(item) {
 		(isLiked) => {
 			if(isLiked) {
 				api.deleteLike(item._id).then((res) => {
-					window.location.reload();
-				});
-				//console.log('Try to delete');
+					card.deleteLike();
+					card.setLikeNr(res.likes.length);
+				})
+				.catch(catchErr);
 			} 
 			else {
 				api.putLike(item._id).then((res) => {
-					window.location.reload();
-				});
-				//console.log('Try to put');
+					card.putLike();
+					card.setLikeNr(res.likes.length);
+				})
+				.catch(catchErr);
 			}
 		},
 		item.likes.length,
@@ -141,21 +144,17 @@ function createCard(item) {
 		}),
 		item.owner._id == myId );
 	const element = card.generateCard();
-	//console.log(myId);
 	return element;
 }
 
 function handleSubmitFormCardAdd(input) {
-	/*const item = {
-		name: input.title,
-		link: input.link
-	}*/
-	//cardSection.setItem(createCard(item));
 	popupCardAdd.saveButton.textContent = 'Сохранение...';
 	api.addNewCard(input.title, input.link).then((res) => {
 		this.close();
-		window.location.reload();
-	});
+		cardSection.setItem(createCard(res));
+		popupCardAdd.saveButton.textContent = 'Сохранить';
+	})
+	.catch(catchErr);
 	
 }
 
@@ -168,5 +167,3 @@ buttonEdit.addEventListener('click', () => {
 
 buttonAdd.addEventListener('click', popupCardAdd.open.bind(popupCardAdd));
 avatar.addEventListener('click', popupAvatar.open.bind(popupAvatar));
-
-//<img src="./images/like.svg" alt="like">

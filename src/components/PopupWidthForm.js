@@ -10,13 +10,8 @@ export default class PopupWidthForm extends Popup{
     }
 
     close() {
-        this._inputList.forEach(input => input.value = '');
+        this._form.reset();
         super.close();
-    }
-
-    open() {
-        this._inputList.forEach(input => input.value = '');
-        super.open();
     }
 
     _getInputValues() {
